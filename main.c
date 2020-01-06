@@ -27,7 +27,16 @@ int main(int argc, char *argv[])
    pid_t pid = fork();
    printf("fork returned: %d\n", (int) pid);
 
-   printf("I am: %d\n", (int) getppid());
-
+   if(pid < 0)
+   {
+           perror("fork is failed");
+   }
+   if(pid == 0)
+   {
+           printf("I am the child with pid %d\n", (int) getppid());
+   } else if (pid > 0)
+   {
+           printf("I am the parent\n");
+   }
    return 0;                   
 }
