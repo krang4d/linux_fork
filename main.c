@@ -32,7 +32,7 @@ void doSomeWork(char *name)
 }
 int main(int argc, char *argv[])
 {
-   printf("I am: %d\n", (int) getppid());
+   printf("I am: %d\n", (int) getpid());
 
    pid_t pid = fork();
    srand((int)pid);
@@ -44,16 +44,17 @@ int main(int argc, char *argv[])
    }
    if(pid == 0)
    {
-           printf("I am the child with pid %d\n", (int) getppid());
+           printf("I am the child with pid %d\n", (int) getpid());
            doSomeWork("Child");
            printf("Child exiting...\n");
-           exit(0);
+           exit(42);
    }
    // We must be the parent
    printf("I am the parent\n");
    doSomeWork("Parent");
-   wait(NULL);
-   printf("Parent ending.\n");
-
+   int status = 0;
+   pid_t childpid = wait(&status);
+   printf("Parent know child %d finished with status %d.\n", (int)childpid, status);
+   
    return 0;                   
 }
