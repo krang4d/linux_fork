@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
    int status = 0;
    pid_t childpid = wait(&status);
    printf("Parent know child %d finished with status %d.\n", (int)childpid, status);
-   
+   int childReturnValue = WEXITSTATUS(status);
+   printf("    Return value was %d\n", childReturnValue);
    return 0;                   
 }

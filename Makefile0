@@ -1,0 +1,14 @@
+all: fork0 execDemo helloExec
+
+fork0: fork0.c
+	gcc -Wall -g -std=c99 -Werror fork0.c -o fork0
+
+execDemo: execDemo.c
+	gcc -Wall -g -std=c99 -Werror execDemo.c -o execDemo
+
+helloExec: helloExec.c
+	gcc helloExec.c -o helloExec
+
+.PHONY: clean
+clean:
+	rm fork0 execDemo helloExec
