@@ -26,6 +26,8 @@
  */
 int main ( int argc, char *argv[] )
 {
+        printf("execDemo.c\n");
+        printf("\tMy PID: %d\n", getpid());
         char *args[] = { "./helloExec", "Hello", "World", NULL };
         execvp("./helloExec", args);
         return EXIT_SUCCESS;

@@ -1,6 +1,8 @@
 
 #include	<stdlib.h>
 #include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 /* 
  * ===  FUNCTION  ======================================================================
@@ -8,9 +10,16 @@
  *  Description:  
  * =====================================================================================
  */
-        int
-main ( int argc, char *argv[] )
+int main ( int argc, char *argv[] )
 {
-        printf("%s, %s\n", argv[1], argv[2]);
+        printf("helloExec.c\n");
+        printf("\tMy PID %d\n", getpid());
+
+        printf("\tMy arguments: ");
+        for(int i =0; i < argc; i++)
+        {
+                printf("%s, ", argv[i]);
+        }
+        printf("\n");
         return EXIT_SUCCESS;
 }				/* ----------  end of function main  ---------- */
