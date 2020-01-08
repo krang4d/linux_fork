@@ -1,4 +1,4 @@
-TARGETS = fork0 execDemo helloExec
+TARGETS = fork0 execDemo helloExec selfExec
 CFLAGS = -Wall -g -std=c99 -Werror
 
 all: clean $(TARGETS)
